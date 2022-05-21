@@ -41,10 +41,11 @@ def call():
       # ara_num_res = extract_ara_num(img)
       # number = unidecode(ara_num_res)
       # os.remove(filename)
-      result = {
-         'id_number': 'file'
-      }
-      return jsonify(result)
+      result = "ssaj"
+      # result = {
+      #    'id_number': 'file'
+      # }
+      return result
 
 
 # @app.route('/id', methods = ['POST'])
