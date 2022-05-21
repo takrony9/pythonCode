@@ -27,27 +27,44 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 #       user = request.args.get('nm')
 #       return user
 
-
-
-
 @app.route('/id', methods = ['POST'])
 def call():
    if request.method == 'POST':
-      file = request.files['image']
+      file = request.form['image']
       with open('./model.bin', 'rb') as f_in:
          model = pickle.load(f_in)
          f_in.close()
-      filename = secure_filename(file.filename)
-      file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-      img = cv2.imread(filename)
-      ara_num_res = extract_ara_num(img)
-      number = unidecode(ara_num_res)
-      os.remove(filename)
+
+      # filename = secure_filename(file.filename)
+      # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      # img = cv2.imread(filename)
+      # ara_num_res = extract_ara_num(img)
+      # number = unidecode(ara_num_res)
+      # os.remove(filename)
       result = {
-         'id_number': number
+         'id_number': file
       }
       return jsonify(result)
-      # cv2.waitKey(0)
+
+
+# @app.route('/id', methods = ['POST'])
+# def call():
+#    if request.method == 'POST':
+#       file = request.files['image']
+#       with open('./model.bin', 'rb') as f_in:
+#          model = pickle.load(f_in)
+#          f_in.close()
+#       filename = secure_filename(file.filename)
+#       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+#       img = cv2.imread(filename)
+#       ara_num_res = extract_ara_num(img)
+#       number = unidecode(ara_num_res)
+#       os.remove(filename)
+#       result = {
+#          'id_number': number
+#       }
+#       return jsonify(result)
+#       # cv2.waitKey(0)
 
    # ##dump the model into a file
    # with open("model.bin", 'wb') as f_out:
