@@ -27,10 +27,10 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 #       user = request.args.get('nm')
 #       return user
 
-@app.route('/id', methods = ['POST'])
+@app.route('/', methods = ['GET'])
 def call():
-   if request.method == 'POST':
-      file = request.form['image']
+   if request.method == 'GET':
+      # file = request.form['image']
       # with open('./model.bin', 'rb') as f_in:
       #    model = pickle.load(f_in)
       #    f_in.close()
@@ -42,7 +42,7 @@ def call():
       # number = unidecode(ara_num_res)
       # os.remove(filename)
       result = {
-         'id_number': file
+         'id_number': 'file'
       }
       return jsonify(result)
 
