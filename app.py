@@ -13,7 +13,6 @@ from flask import Flask, flash, request, jsonify
 from werkzeug.utils import secure_filename
 
 
-pytesseract.pytesseract.tesseract_cmd = '/usr/local/Cellar/tesseract/5.1.0/bin/tesseract'
 UPLOAD_FOLDER = './'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
@@ -50,6 +49,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/id', methods = ['POST'])
 def call():
+   pytesseract.pytesseract.tesseract_cmd = '/usr/local/Cellar/tesseract/5.1.0/bin/tesseract'
    if request.method == 'POST':
       file = request.files['image']
       # with open('./model.bin', 'rb') as f_in:
