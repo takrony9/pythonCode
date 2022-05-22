@@ -150,7 +150,8 @@ def resize_ara_num(img):
    img = cv2.resize(img, dim, interpolation=cv2.INTER_AREA)
    return img
 
-
+if __name__ == '__main__':
+    app.run()
 
 
 
