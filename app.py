@@ -71,9 +71,9 @@ def call():
    #    pickle.dump(call, f_out)  # write final_model in .bin file
    #    f_out.close()  # close the file
 ##dump the model into a file
-with open("model.bin", 'wb') as f_out:
-    pickle.dump(call, f_out) # write final_model in .bin file
-    f_out.close()
+# with open("model.bin", 'wb') as f_out:
+#     pickle.dump(call, f_out) # write final_model in .bin file
+#     f_out.close()
 
 
 def extract_ara_num(img1):
