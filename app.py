@@ -82,6 +82,7 @@ def call():
 
 
 # tessdata_dir_config = "/usr/local/Cellar/tesseract/5.1.0/bin/tesseract"
+pytesseract.pytesseract.tesseract_cmd = r'/usr/local/Cellar/tesseract/5.1.0/bin/tesseract'
 
 
 def extract_ara_num(img1):
