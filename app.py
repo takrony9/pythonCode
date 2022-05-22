@@ -58,10 +58,10 @@ def call():
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
       img = cv2.imread(filename)
       ara_num_res = extract_ara_num(img)
-      number = unidecode(ara_num_res)
-      os.remove(filename)
+      # number = unidecode(ara_num_res)
+      # os.remove(filename)
       result = {
-         'id_number':  number
+         'id_number':  ara_num_res
       }
       return jsonify(result)
 #       # cv2.waitKey(0)
