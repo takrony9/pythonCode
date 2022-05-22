@@ -71,7 +71,7 @@ def extract_ara_num(img1):
 
       img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
       th, img = cv2.threshold(img, 100, 255, cv2.THRESH_TRUNC)
-      pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\\tesseract.exe'
+      pytesseract.pytesseract.tesseract_cmd = r'C:\Users\Micro Systems\AppData\Local\Tesseract-OCR\\tesseract.exe'
       res = pytesseract.image_to_string(img,lang="ara_t12").split()
       # print(res)
       if res != []:
