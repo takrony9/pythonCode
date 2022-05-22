@@ -17,8 +17,12 @@ UPLOAD_FOLDER = './'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 pytesseract.pytesseract.tesseract_cmd = '/usr/local/Cellar/tesseract/5.1.0/bin/tesseract'
 
+
+
+
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 # @app.route('/',methods = ['POST', 'GET'])
 # def login():
@@ -52,9 +56,9 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def call():
    if request.method == 'POST':
       file = request.files['image']
-      with open('./model.bin', 'rb') as f_in:
-         model = pickle.load(f_in)
-         f_in.close()
+      # with open('./model.bin', 'rb') as f_in:
+      #    model = pickle.load(f_in)
+      #    f_in.close()
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
       img = cv2.imread(filename)
@@ -75,6 +79,9 @@ def call():
 # with open("model.bin", 'wb') as f_out:
 #     pickle.dump(call, f_out) # write final_model in .bin file
 #     f_out.close()
+
+
+
 
 
 def extract_ara_num(img1):
@@ -140,8 +147,7 @@ def resize_ara_num(img):
    img = cv2.resize(img, dim, interpolation=cv2.INTER_AREA)
    return img
 
-if __name__ == '__main__':
-    app.run()
+
 
 
 
