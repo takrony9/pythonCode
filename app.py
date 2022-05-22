@@ -23,33 +23,6 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
-# @app.route('/',methods = ['POST', 'GET'])
-# def login():
-#    if request.method == 'POST':
-#       user = request.form['nm']
-#       return user
-#    else:
-#       user = request.args.get('nm')
-#       return user
-
-# @app.route('/', methods = ['POST'])
-# def call():
-#    if request.method == 'POST':
-#       file = request.form['image']
-#       with open('./model.bin', 'rb') as f_in:
-#          model = pickle.load(f_in)
-#          f_in.close()
-#       filename = secure_filename(file.filename)
-#       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-#       img = cv2.imread(filename)
-#       ara_num_res = extract_ara_num(img)
-#       number = unidecode(ara_num_res)
-#       os.remove(filename)
-#       # result = "ssaj"
-#       result = {
-#          'id_number': number
-#       }
-#       return jsonify(result)
 
 @app.route('/id', methods = ['POST'])
 def call():
@@ -61,7 +34,7 @@ def call():
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
       img = cv2.imread(filename)
-      pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR\\tesseract.exe'
+      pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\\tesseract.exe'
       ara_num_res = extract_ara_num(img)
       number = unidecode(ara_num_res)
       os.remove(filename)
