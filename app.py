@@ -59,13 +59,14 @@ def call():
       #    model = pickle.load(f_in)
       #    f_in.close()
       filename = secure_filename(file.filename)
-      # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
       img = cv2.imread(filename)
+      pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR\\tesseract.exe'
       ara_num_res = extract_ara_num(img)
-      # number = unidecode(ara_num_res)
-      # os.remove(filename)
+      number = unidecode(ara_num_res)
+      os.remove(filename)
       result = {
-         'id_number':  ara_num_res
+         'id_number':  number
       }
       return jsonify(result)
 #       # cv2.waitKey(0)
@@ -93,7 +94,7 @@ def extract_ara_num(img1):
    count = 0
    while (True):
       count = count + 1
-      pytesseract.pytesseract.tesseract_cmd = r'/usr/local/Cellar/tesseract/5.1.0/bin/tesseract'
+      # pytesseract.pytesseract.tesseract_cmd = r'/usr/local/Cellar/tesseract/5.1.0/bin/tesseract'
 
       img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
       th, img = cv2.threshold(img, 100, 255, cv2.THRESH_TRUNC)
