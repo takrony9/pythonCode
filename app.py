@@ -59,7 +59,7 @@ def call():
       #    model = pickle.load(f_in)
       #    f_in.close()
       filename = secure_filename(file.filename)
-      file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
       img = cv2.imread(filename)
       ara_num_res = extract_ara_num(img)
       # number = unidecode(ara_num_res)
@@ -82,7 +82,7 @@ def call():
 
 
 # tessdata_dir_config = "/usr/local/Cellar/tesseract/5.1.0/bin/tesseract"
-pytesseract.pytesseract.tesseract_cmd = r'/usr/local/Cellar/tesseract/5.1.0/bin/tesseract'
+# pytesseract.pytesseract.tesseract_cmd = r'/usr/local/Cellar/tesseract/5.1.0/bin/tesseract'
 
 
 def extract_ara_num(img1):
