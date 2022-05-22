@@ -15,7 +15,6 @@ from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = './'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-pytesseract.pytesseract.tesseract_cmd = '/usr/local/Cellar/tesseract/5.1.0/bin/tesseract'
 
 
 
