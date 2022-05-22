@@ -82,7 +82,6 @@ def call():
 
 
 # tessdata_dir_config = "/usr/local/Cellar/tesseract/5.1.0/bin/tesseract"
-# pytesseract.pytesseract.tesseract_cmd = r'/usr/local/Cellar/tesseract/5.1.0/bin/tesseract'
 
 
 def extract_ara_num(img1):
@@ -94,6 +93,8 @@ def extract_ara_num(img1):
    count = 0
    while (True):
       count = count + 1
+      pytesseract.pytesseract.tesseract_cmd = r'/usr/local/Cellar/tesseract/5.1.0/bin/tesseract'
+
       img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
       th, img = cv2.threshold(img, 100, 255, cv2.THRESH_TRUNC)
       res = pytesseract.image_to_string(img,lang="ara_t12").split()
