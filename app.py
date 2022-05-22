@@ -28,13 +28,12 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def call():
    if request.method == 'POST':
       file = request.files['image']
-      with open('./model.bin', 'rb') as f_in:
-         model = pickle.load(f_in)
-         f_in.close()
+      # with open('./model.bin', 'rb') as f_in:
+      #    model = pickle.load(f_in)
+      #    f_in.close()
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
       img = cv2.imread(filename)
-
       ara_num_res = extract_ara_num(img)
       number = unidecode(ara_num_res)
       os.remove(filename)
@@ -73,7 +72,7 @@ def extract_ara_num(img1):
       img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
       th, img = cv2.threshold(img, 100, 255, cv2.THRESH_TRUNC)
       pytesseract.pytesseract.tesseract_cmd = r'C:\Users\Micro Systems\AppData\Local\Tesseract-OCR\tesseract.exe'
-      res = pytesseract.image_to_string(img,lang="ara_t12").split()
+      res = pytesseract.image_to_string(img,"ara_t12",config='').split()
       # print(res)
       if res != []:
          for i in res:
